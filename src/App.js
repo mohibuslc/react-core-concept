@@ -18,7 +18,7 @@ const Products=[
   return (
     <div className="header" >
     <Product name={Products[0].name} price={Products[0].price}></Product>
-    
+    <Product name ={Products[1].name} price={Products[1].price}></Product>
      
     </div>
   );
@@ -31,9 +31,11 @@ const ProductStyle = {
   border: '1px solid  gray',
   borderRadius: '10px',
   backgroundColor: 'gray',
-  height: '200px',
+  height: '230px',
   width :'200px',
-  float: 'left'
+  margin: '10px',
+  marginLeft:'24px',
+  marginTop:'20px'
 
   }
 
@@ -42,7 +44,10 @@ const ProductStyle = {
     <div style={ProductStyle}>
 
       <h3>{props.name}</h3>
+      <br></br>
       <h2>{props.price}</h2>
+      <hr></hr>
+      <br></br>
       <button>Buy now</button>
       </div>
   )
