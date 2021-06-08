@@ -3,50 +3,49 @@ import './App.css';
 
 function App() {
 
-  var persone = {  
-    name: "Dr. Khalik",
-    job:"Medicine_Specilst",
-    Address: "Dhaka"
 
-  } 
-
-  var style ={
-
-  backgroundColor:'red',
-  borderReduis: '10px'
-
+const Products=[
   
-  }
+  
+{name: 'Photoshop', price:'$90.99'},
 
-  var persone2={
-    name: 'Tina',
+{name:'VB-6.0', price: '$36.00' },
 
-    job:'singer'
+{name : 'TB-code', price: '$81.00'}
 
-  }
+]
 
-  var style={
+  return (
+    <div className="header" >
+    <Product name={Products[0].name} price={Products[0].price}></Product>
+    
+     
+    </div>
+  );
+}
+function Product (props){
 
-    backgroundColor:'yellow'
+
+const ProductStyle = {
+
+  border: '1px solid  gray',
+  borderRadius: '10px',
+  backgroundColor: 'gray',
+  height: '200px',
+  width :'200px',
+  float: 'left'
+
   }
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        
-        <h1 className ="" style={style}> Persone Details : {persone.name+"" +persone.job}</h1>
-        
-        <h3 className ="" style ={style}> Singer: {persone2.name+" "+persone2.job}</h3>
-        <p>My First React-App</p> 
 
-       
-      </header>
-    </div>
-  );
+    <div style={ProductStyle}>
+
+      <h3>{props.name}</h3>
+      <h2>{props.price}</h2>
+      <button>Buy now</button>
+      </div>
+  )
 }
 
 export default App;
