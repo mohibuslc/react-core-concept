@@ -3,11 +3,14 @@ import './App.css';
 
 function App() {
 
+const Actross = [ 'Kalam', 'Habib','Jamal', 'Tina']
+
 
 const Products=[
   
   
-{name: 'Photoshop', price:'$90.99'},
+{name: 'Photoshop', price:'$90.99'}, // {} - is call Array and inside of array intety  are call of OBJECT.
+
 
 {name:'VB-6.0', price: '$36.00' },
 
@@ -15,13 +18,35 @@ const Products=[
 
 ]
 
+//const ProductName = Products.map(product => product.name); // use the line for Product Object : 
+//console.log(ProductName);
+
+const Actrossname = Actross.map(Act => Act);
+
+console.log(Actrossname);
+
+
   return (
-    <div className="header" >
-    <Product name={Products[0].name} price={Products[0].price}></Product>
-    <Product name ={Products[1].name} price={Products[1].price}></Product>
+
+
+   
+    <div  >
+
      
+    <Product Prod={Products[0]}></Product>
+    <Product Prod={Products[1]}></Product>
+    <Product Prod={Products[2]}></Product>
+     <ul>
+
+          {
+            Actross.map(Act => <li>{Act}</li>)
+  
+        }
+       
+       </ul>
     </div>
-  );
+   
+  )
 }
 function Product (props){
 
@@ -39,13 +64,16 @@ const ProductStyle = {
 
   }
 
-  return (
+ const {name, price}= props.Prod;
 
+
+  return (
+  
     <div style={ProductStyle}>
 
-      <h3>{props.name}</h3>
+      <h3>{name}</h3>
       <br></br>
-      <h2>{props.price}</h2>
+      <h2>{price}</h2>
       <hr></hr>
       <br></br>
       <button>Buy now</button>
