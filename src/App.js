@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import React , {useState} from 'react';
+import React , {useState , useEffect} from 'react';
 
 
 function App() {
@@ -27,14 +27,14 @@ const Products=[
 
 //console.log(Actrossname);
 
-
   return (
 
 
-   
+  
     <div className=" equment" >
 
 <Count></Count>
+<Users></Users>
 
 
 <ul>
@@ -46,7 +46,7 @@ const Products=[
 {
 
 
-Products.map(product => <li>{product.name}</li>)
+Products.map(pd => <li>{pd.name}</li>)
 
 }
 
@@ -73,6 +73,7 @@ const ProductStyle = {
   width :'200px',
   margin: '10px',
   marginLeft:'24px',
+
   marginTop:'20px'
 
   }
@@ -99,14 +100,58 @@ function Count(){
 const[test, setTest]=useState(89);
 
 const handleIncrase = () => setTest(test +1); // Incrase Of Number When click the Button ;
+const handleDecrase = () => setTest(test-1);
+
+  return(
+
+    <div className="App-header" >
+      <h1>Count: {test}</h1>
+      
+      <button class="btn btn-primary" onClick={handleIncrase}>Incrase-Number</button>  
+      <br></br>
+      <br></br>
+        <button class="btn btn-danger" onClick ={handleDecrase}>Decrase-Number</button>
+    </div>
+  )
+}
+// Dynamic user Data pass using useState and useEffecct :
+
+
+function Users(){
+
+  const [users , setUsers]=useState([]);
+
+  useEffect(()=>{
+    fetch('https://jsonplaceholder.typicode.com/users')
+    .then(res => res.json())
+    .then(data => setUsers(data))
+
+
+  }, []);
 
 
   return(
 
     <div>
-      <h1>Count: {test}</h1>
-      <button onClick={handleIncrase}>Incrase-Number</button>  // Incrase Of Number When click the Button ;
+      <h1>Dynamic  Users:{users.length} </h1>
+      <ul>
+      
+        {
+
+          users.map(tb =>
+           <li>
+          users_Name: {tb.name};
+          Phone_Number:{tb.phone}; 
+          websit:{tb.website}
+          
+          
+          
+          </li> )
+        }
+        </ul>
     </div>
+
+
   )
 }
 export default App;
